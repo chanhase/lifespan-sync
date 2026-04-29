@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>終焉のシンクロニシティ - 寿命診断</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #1a1a1a; color: #eee; padding: 50px; }
+        .card { background: #333; padding: 30px; border-radius: 15px; max-width: 500px; margin: auto; }
+        input, select, button { margin: 10px; padding: 10px; border-radius: 5px; border: none; }
+        button { background: #007bff; color: white; cursor: pointer; font-weight: bold; }
+        #result { margin-top: 20px; font-size: 1.2em; color: #ffcc00; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>寿命同期診断</h2>
+        <p>あなたと同時に寿命を迎える<br>パートナーの生年月日を算出します</p>
+        
+        <div>
+            自分の生年月日: <input type="date" id="myBday" value="1992-05-15"><br>
+            自分の性別: 
+            <select id="myGender">
+                <option value="male">男性</option>
+                <option value="female">女性</option>
+            </select><br>
+            パートナーの性別: 
+            <select id="pGender">
+                <option value="female" selected>女性</option>
+                <option value="male">男性</option>
+            </select>
+        </div>
+        
+        <button onclick="calculate()">診断する</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            const lifeExpectancy = { male: 81.09, female: 87.14 };
+            const myBday = new Date(document.getElementById('myBday').value);
+            const myGender = document.getElementById('myGender').value;
+            const pGender = document.getElementById('pGender').value;
+
+            if (isNaN(myBday)) { alert("生年月日を入力してください"); return; }
+
+            // 自分の死亡予測日
+            const myDeath = new Date(myBday.getTime() + (lifeExpectancy[myGender] * 365.25 * 24 * 60 * 60 * 1000));
+            
+            // パートナーの理想の誕生日
+            const pBday = new Date(myDeath.getTime() - (lifeExpectancy[pGender] * 365.25 * 24 * 60 * 60 * 1000));
+
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('result').innerHTML = 
+                `理想のパートナーの生年月日：<br><strong>${pBday.toLocaleDateString('ja-JP', options)}</strong>`;
+        }
+    </script>
+</body>
+</html>
