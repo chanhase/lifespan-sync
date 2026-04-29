@@ -6,7 +6,7 @@
 　　<meta property="og:description" content="厚生労働省の統計に基づき、あなたと同じ日に人生の幕を閉じるパートナーの生年月日を算出します。">
 　　<meta property="og:type" content="website">
 　　<meta property="og:url" content="https://chanhase.github.io/lifespan-sync/">
-　　<meta name="twitter:card" content="summary"> ```
+　　<meta name="twitter:card" content="summary">
     <title>終焉のシンクロニシティ - 寿命診断</title>
     <style>
         body { font-family: sans-serif; text-align: center; background: #1a1a1a; color: #eee; padding: 50px; }
@@ -34,8 +34,12 @@
                 <option value="male">男性</option>
             </select>
         </div>
-        
         <button onclick="calculate()">診断する</button>
+        <hr style="margin-top: 30px; border: 0; border-top: 1px solid #555;">
+　　　　 <div style="font-size: 0.8em; color: #aaa; text-align: left; margin-top: 10px;">
+   　 　     <p>※本ツールは、厚生労働省「令和5年簡易生命表」の平均寿命データに基づいた統計的なシミュレーションであり、個人の寿命を保証・予言するものではありません。</p>
+   　　      <p>※算出には、成人の寿命の標準偏差（約11年）を考慮した統計モデルを使用しています。</p>
+　　　　 </div>
         <div id="result"></div>
     </div>
 
