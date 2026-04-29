@@ -2,12 +2,19 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <title>終焉のシンクロニシティ - 寿命同期診断</title>
+    
     <meta property="og:title" content="終焉のシンクロニシティ - 寿命同期診断">
     <meta property="og:description" content="厚生労働省の統計に基づき、あなたと同じ日に人生の幕を閉じるパートナーの生年月日を算出します。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chanhase.github.io/lifespan-sync/">
-    <meta name="twitter:card" content="summary">
-    <title>終焉のシンクロニシティ - 寿命診断</title>
+    <meta property="og:image" content="https://chanhase.github.io/lifespan-sync/og-image.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="終焉のシンクロニシティ - 寿命同期診断">
+    <meta name="twitter:description" content="統計学的に、あなたと同じ日に人生の幕を閉じるパートナーはいつ生まれの人？">
+    <meta name="twitter:image" content="https://chanhase.github.io/lifespan-sync/og-image.png">
+
     <style>
         body { font-family: sans-serif; text-align: center; background: #1a1a1a; color: #eee; padding: 50px; }
         .card { background: #333; padding: 30px; border-radius: 15px; max-width: 500px; margin: auto; }
@@ -57,7 +64,7 @@
             if (!myBdayValue) { alert("生年月日を入力してください"); return; }
             const myBday = new Date(myBdayValue);
 
-            // 自分の死亡予測日
+            // 自分の死亡予測日 (うるう年考慮: 365.2425日)
             const myDeath = new Date(myBday.getTime() + (lifeExpectancy[myGender] * 365.2425 * 24 * 60 * 60 * 1000));
             
             // パートナーの理想の誕生日
